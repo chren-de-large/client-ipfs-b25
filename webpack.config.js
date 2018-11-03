@@ -5,8 +5,7 @@ const path = require("path");
 module.exports = {
   entry: ["react-hot-loader/patch", "./src/index.js"],
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ["babel-loader"]
@@ -15,9 +14,9 @@ module.exports = {
         test: /\.scss$/,
         use: [
           // fallback to style-loader in development
-          process.env.NODE_ENV !== "production"
-            ? "style-loader"
-            : MiniCssExtractPlugin.loader,
+          process.env.NODE_ENV !== "production" ?
+          "style-loader" :
+          MiniCssExtractPlugin.loader,
           "css-loader",
           "sass-loader"
         ]
@@ -28,7 +27,7 @@ module.exports = {
     extensions: ["*", ".js", ".jsx", ".scss"]
   },
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "docs"),
     publicPath: "/",
     filename: "bundle.js"
   },
@@ -40,7 +39,7 @@ module.exports = {
     })
   ],
   devServer: {
-    contentBase: "./dist",
+    contentBase: "./docs",
     host: '0.0.0.0',
     port: '8080',
     hot: true
