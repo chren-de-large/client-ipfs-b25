@@ -3,7 +3,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
 module.exports = [{
-  entry: ["react-hot-loader/patch", "./src/index.js"],
+  entry: ["./src/index.js"],
   module: {
     rules: [{
         test: /\.(js|jsx)$/,
@@ -32,20 +32,13 @@ module.exports = [{
     filename: "bundle.js"
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css"
     })
-  ],
-  devServer: {
-    contentBase: "./docs",
-    host: '0.0.0.0',
-    port: '8080',
-    hot: true
-  }
+  ]
 }, {
-  entry: ["react-hot-loader/patch", "./src/service-worker.js"],
+  entry: ["./src/service-worker.js"],
   module: {
     rules: [{
       test: /\.(js)$/,
@@ -60,11 +53,5 @@ module.exports = [{
     path: path.resolve(__dirname, "docs"),
     publicPath: "/",
     filename: "sw.js"
-  },
-  devServer: {
-    contentBase: "./docs",
-    host: '0.0.0.0',
-    port: '8081',
-    hot: true
   }
 }];
