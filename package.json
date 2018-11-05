@@ -33,8 +33,7 @@
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
-    "ipfs": "^0.30.0",
-    "orbit-db": "^0.19.8",
+    "ipfs": "^0.33.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1"
   }
