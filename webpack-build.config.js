@@ -37,21 +37,23 @@ module.exports = [{
       chunkFilename: "[id].css"
     })
   ]
-}, {
-  entry: ["./src/service-worker.js"],
-  module: {
-    rules: [{
-      test: /\.(js)$/,
-      exclude: /node_modules/,
-      use: ["babel-loader"]
-    }]
-  },
-  resolve: {
-    extensions: [".js"]
-  },
-  output: {
-    path: path.resolve(__dirname, "docs"),
-    publicPath: "/",
-    filename: "sw.js"
-  }
 }];
+// DO LATER
+// , {
+//   entry: ["./src/service-worker.js"],
+//   module: {
+//     rules: [{
+//       test: /\.(js)$/,
+//       exclude: /node_modules/,
+//       use: ["babel-loader"]
+//     }]
+//   },
+//   resolve: {
+//     extensions: [".js"]
+//   },
+//   output: {
+//     path: path.resolve(__dirname, "docs"),
+//     publicPath: "/",
+//     filename: "sw.js"
+//   }
+// }
