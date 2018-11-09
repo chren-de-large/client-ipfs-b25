@@ -930,10 +930,14 @@ img.scale-with-grid {
   width: 0;
   height: 0; }
 
-.headline, .title {
+.headline,
+.title {
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
   font-weight: 500; }
 
 p {
   font-family: 'Open Sans', sans-serif; }
+
+.content {
+  display: none; }
 
