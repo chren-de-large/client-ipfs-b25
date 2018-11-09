@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "NODE_ENV=production webpack --config ./webpack-build.config.js --mode production --progress --bail",
-    "dev": "webpack-dev-server --config ./webpack.config.js --mode development & open http://localhost:8080/",
+    "dev": "webpack-dev-server --config ./webpack.config.js --hot --inline --mode development & open http://localhost:8080/",
     "test": "echo \"No test specified\" && exit 0"
   },
   "keywords": [],
@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "ipfs": "^0.33.1",
+    "openpgp": "^4.2.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1"
   }

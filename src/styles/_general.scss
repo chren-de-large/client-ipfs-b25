@@ -1,8 +1,13 @@
-.headline, .title {
-    font-family: 'Roboto', Arial, Helvetica, sans-serif;
-    font-weight: 500;
+.headline,
+.title {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-weight: 500;
 }
 
 p {
-    font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.content {
+  display: none;
 }

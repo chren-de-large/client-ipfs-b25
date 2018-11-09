@@ -32,7 +32,6 @@ module.exports = [{
     filename: "bundle.js"
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css"
@@ -42,29 +41,33 @@ module.exports = [{
     contentBase: "./docs",
     host: '0.0.0.0',
     port: '8080',
-    hot: true
-  }
-}, {
-  entry: ["react-hot-loader/patch", "./src/service-worker.js"],
-  module: {
-    rules: [{
-      test: /\.(js)$/,
-      exclude: /node_modules/,
-      use: ["babel-loader"]
-    }]
-  },
-  resolve: {
-    extensions: [".js"]
-  },
-  output: {
-    path: path.resolve(__dirname, "docs"),
-    publicPath: "/",
-    filename: "sw.js"
-  },
-  devServer: {
-    contentBase: "./docs",
-    host: '0.0.0.0',
-    port: '8081',
-    hot: true
+    hot: true,
+    inline: true
   }
 }];
+//
+// , {
+//   entry: ["react-hot-loader/patch", "./src/service-worker.js"],
+//   module: {
+//     rules: [{
+//       test: /\.(js)$/,
+//       exclude: /node_modules/,
+//       use: ["babel-loader"]
+//     }]
+//   },
+//   resolve: {
+//     extensions: [".js"]
+//   },
+//   output: {
+//     path: path.resolve(__dirname, "docs"),
+//     publicPath: "/",
+//     filename: "sw.js"
+//   },
+//   devServer: {
+//     contentBase: "./docs",
+//     host: '0.0.0.0',
+//     port: '8081',
+//     hot: true,
+//     inline: true
+//   }
+// }

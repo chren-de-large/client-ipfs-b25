@@ -4,7 +4,8 @@ import 'babel-core/register';
 import 'babel-polyfill';
 import './styles/style.scss';
 
-const USERNAME = 'User' + Math.floor((Math.random() * 256) + 1);
+var username = '';
+var password = '';
 const IPFS = require('ipfs');
 const PUBSUB_CHANNEL = 'client-ipfs-b25';
 const ipfsRepo = '/ipfs-chat';
@@ -38,25 +39,54 @@ window.node.once('ready', async () => {
   console.warn('ready! ');
   window.node.pubsub.subscribe(PUBSUB_CHANNEL, (encodedMsg) => {
     const data = JSON.parse(encodedMsg.data.toString());
-    console.warn('msg! ', data);
-    var div = document.getElementById('content');
-    div.innerHTML += data.user + ' :: ' + data.value + "<br />";
+    if (data.ev === 'message') {
+      renderMsg(data);
+    } else if (data.ev === 'prevMessage') {
+      if (!!data.msgs.length) {
+        for (var i = 0; i < data.msgs.length; i++) {
+          renderMsg(data.msgs[i])
+        }
+      }
+    }
   });
 });
 
 window.send = () => {
   const msg = {
     ev: 'message',
-    user: USERNAME,
+    user: username,
     value: document.getElementById("exampleMessage").value
   }
-  const msgEncoded = node.types.Buffer.from(JSON.stringify(msg));
+  const msgEncoded = window.node.types.Buffer.from(JSON.stringify(msg));
   window.node.pubsub.publish(PUBSUB_CHANNEL, msgEncoded);
   document.getElementById("exampleMessage").value = '';
 }
 
+function getAllMessage() {
+  const msg = {
+    ev: 'getAllMessage',
+    user: username
+  }
+  const msgEncoded = window.node.types.Buffer.from(JSON.stringify(msg));
+  window.node.pubsub.publish(PUBSUB_CHANNEL, msgEncoded);
+  console.warn('getAllMessage');
+}
+
+function renderMsg(msg) {
+  var div = document.getElementById('content');
+  div.innerHTML += msg.user + ' :: ' + msg.value + "<br />";
+}
+
+window.login = () => {
+  username = document.getElementById('email').value;
+  document.getElementById('username').innerHTML = username;
+  document.getElementById('login').style.display = 'none';
+  document.getElementById('content-wrapper').style.display = 'block';
+  getAllMessage();
+}
+
 window.addEventListener("load", () => {
-  document.getElementById('username').innerHTML = USERNAME;
+  console.warn('loaded');
 });
 
 module.hot.accept();

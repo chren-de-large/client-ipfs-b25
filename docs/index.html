@@ -10,10 +10,23 @@
 
 <body>
   <div>
-    <div class="container">
+    <div class="container" id="login">
+      <br><br><br>
+      <div class="row">
+        <div class="six columns">
+          <label for="email">Your email</label>
+          <input class="u-full-width" type="email" placeholder="my@email.com" id="email">
+        </div>
+        <div class="six columns">
+          <label for="password">Your email</label>
+          <input class="u-full-width" type="password" placeholder="" id="password">
+        </div>
+      </div>
+      <input class="button-primary" type="submit" value="Login" onclick="login()">
+    </div>
+    <div class="container content" id="content-wrapper">
       <section class="header">
         <div class="row" id="content">
-
         </div>
         <div class="row">
           <label for="exampleMessage" id="username"></label>
@@ -24,7 +37,6 @@
     </div>
   </div>
   <script src="./bundle.js"></script>
-  <script src="./sw.js"></script>
 </body>
 
 </html>
